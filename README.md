@@ -15,8 +15,8 @@ The Habit Tracker is a minimalist and intuitive application designed to help use
 
 ### Prerequisites
 
-- Node.js (v12 or later)
-- npm (v6 or later) or yarn (v1.22 or later)
+- Node.js
+- npm or yarn
 
 ### Installation
 
