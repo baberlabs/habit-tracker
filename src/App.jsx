@@ -30,12 +30,16 @@ export default function App() {
     
     [
         {
-            title: <name>,
+            title: Journalling
             year: 2024
             track: [
-                false,
-                false,
-                false
+                2024_1: false,
+                2024_2: false,
+                2024_3: false,
+                ...
+                ...
+                ...
+                2024_366: false
             ]
         }
     ]
@@ -69,14 +73,24 @@ export default function App() {
   };
 
   const handleCheck = (title, day, isDone) => {
-    const updatedHabits = [...habits];
-    updatedHabits.map((habit) => {
+    const updatedHabits = habits.map((habit) => {
       if (habit.title === title) {
-        habit.track[day] = !isDone;
+        return {
+          ...habit,
+          track: {
+            ...habit.track,
+            [day]: !isDone,
+          },
+        };
       }
+      return habit;
     });
     setHabits(updatedHabits);
   };
+
+  const todayNumber = Math.ceil(
+    (new Date() - new Date(new Date().getFullYear(), 0, 1)) / 86400000,
+  );
 
   return (
     <div className="flex min-h-screen flex-row items-center justify-center gap-16 bg-zinc-950 text-gray-200">
@@ -118,13 +132,6 @@ export default function App() {
             if (index !== habits.length - 1) {
               return (
                 <div key={index} className="flex flex-col items-center gap-10">
-                  {/* <a
-                    href="/habit-view"
-                    className="text-center text-3xl"
-                    onClick={handleViewClick}
-                    >
-                    {habit.title}
-                </a> */}
                   <p
                     className="cursor-pointer text-center text-3xl"
                     onClick={handleViewClick}
@@ -137,13 +144,6 @@ export default function App() {
             } else {
               return (
                 <div key={index} className="flex flex-col items-center gap-4">
-                  {/* <a
-                    href="/habit-view"
-                    className="text-center text-3xl"
-                    onClick={handleViewClick}
-                    >
-                    {habit.title}
-                </a> */}
                   <p
                     className="cursor-pointer text-center text-3xl"
                     onClick={handleViewClick}
@@ -165,10 +165,6 @@ export default function App() {
             if (habit.title === view) {
               // console.log(habit);
               return Object.entries(habit.track).map(([day, isDone], index) => {
-                const date = new Date();
-                const todayNumber = Math.ceil(
-                  (date - new Date(date.getFullYear(), 0, 1)) / 86400000,
-                );
                 if (index + 1 < todayNumber) {
                   return (
                     <input
@@ -211,17 +207,6 @@ export default function App() {
           })}
         </div>
       </div>
-      {/*
-      <input
-        key={index}
-        type="checkbox"
-        name={index}
-        id={index}
-        checked={day}
-        onChange={() => handleCheck(day, index)}
-        className="today-checkbox"
-      />
-      */}
     </div>
   );
 }
