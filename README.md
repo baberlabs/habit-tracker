@@ -11,6 +11,17 @@ The Habit Tracker is a minimalist and intuitive application designed to help use
 - **Track Habits**: Mark habits as completed for each day of the year.
 - **Persistent Storage**: Utilizes `localStorage` to save habits and track progress.
 
+## Screenshots
+
+### Adding a habit:
+![image](https://github.com/baberlabs/habit-tracker/assets/125814185/126335c6-d439-44e1-9ab5-15a048addfd7)
+
+### Current habits list:
+![image](https://github.com/baberlabs/habit-tracker/assets/125814185/a8bdb06b-4c3e-44dc-a57d-3f539f6812f7)
+
+### Viewing a habit (track):
+![image](https://github.com/baberlabs/habit-tracker/assets/125814185/cfde3d8d-8dbc-4331-8198-95ccf0d724f4)
+
 ## Getting Started
 
 ### Prerequisites
