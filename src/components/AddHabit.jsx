@@ -76,7 +76,7 @@ export default function AddHabit({
 
   return (
     <div
-      className={`${visibility.AddHabit} flex flex-col gap-14 rounded-xl border border-zinc-700 p-4 text-xl`}
+      className={`${visibility.AddHabit} flex min-h-screen flex-col justify-center gap-14 rounded-xl p-4 text-xl`}
     >
       <h1 className="text-center text-4xl">
         <div>Minimalist</div>

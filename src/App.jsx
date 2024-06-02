@@ -44,6 +44,7 @@ export default function App() {
       />
       <CurrentHabits
         habits={habits}
+        setHabits={setHabits}
         setView={setView}
         visibility={visibility}
         setVisibility={setVisibility}
