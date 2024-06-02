@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "IM Fell DW Pica SC", sans-serif;
+}
