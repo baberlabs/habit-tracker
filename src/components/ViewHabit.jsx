@@ -1,4 +1,10 @@
-export default function ViewHabit({ habits, setHabits, view }) {
+export default function ViewHabit({
+  habits,
+  setHabits,
+  view,
+  visibility,
+  setVisibility,
+}) {
   const handleCheck = (title, day, isDone) => {
     const updatedHabits = habits.map((habit) => {
       if (habit.title === title) {
@@ -19,8 +25,18 @@ export default function ViewHabit({ habits, setHabits, view }) {
     (new Date() - new Date(new Date().getFullYear(), 0, 1)) / 86400000,
   );
 
+  const handleVisibility = () => {
+    setVisibility({
+      AddHabit: "hidden",
+      CurrentHabits: "",
+      ViewHabit: "hidden",
+    });
+  };
+
   return (
-    <div className="flex w-[350px] flex-col items-center justify-center gap-4 rounded-xl border border-zinc-700 p-8 text-xl">
+    <div
+      className={`${visibility.ViewHabit} flex w-[350px] flex-col items-center justify-center gap-4 rounded-xl border border-zinc-700 p-8 text-xl`}
+    >
       <h2 className="text-xl">{view}</h2>
       <div className="flex flex-row flex-wrap items-center justify-center">
         {habits.map((habit) => {

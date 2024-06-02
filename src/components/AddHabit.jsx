@@ -1,13 +1,19 @@
 import { useState } from "react";
 
-export default function AddHabit({ habits, setHabits, setView }) {
+export default function AddHabit({
+  habits,
+  setHabits,
+  setView,
+  visibility,
+  setVisibility,
+}) {
   const [inputValue, setInputValue] = useState("");
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
   };
 
-  const handleClick = (e) => {
+  const addNewHabit = (e) => {
     e.preventDefault();
     if (inputValue.trim() !== "") {
       const updatedHabits = [...habits];
@@ -54,8 +60,24 @@ export default function AddHabit({ habits, setHabits, setView }) {
     }
   };
 
+  const handleVisibility = () => {
+    setVisibility({
+      AddHabit: "hidden",
+      CurrentHabits: "",
+      ViewHabit: "hidden",
+    });
+    console.log(visibility.AddHabit);
+  };
+
+  const handleClick = (e) => {
+    addNewHabit(e);
+    handleVisibility();
+  };
+
   return (
-    <div className="flex flex-col gap-14 rounded-xl border border-zinc-700 p-4 text-xl">
+    <div
+      className={`${visibility.AddHabit} flex flex-col gap-14 rounded-xl border border-zinc-700 p-4 text-xl`}
+    >
       <h1 className="text-center text-4xl">
         <div>Minimalist</div>
         <div>Habit Tracker</div>
@@ -76,9 +98,12 @@ export default function AddHabit({ habits, setHabits, setView }) {
           Start Tracking
         </button>
       </form>
-      <a href="current-habits" className="text-center text-zinc-300 underline">
+      <p
+        className="cursor-pointer text-center text-zinc-300 underline"
+        onClick={handleVisibility}
+      >
         View current habits
-      </a>
+      </p>
     </div>
   );
 }
